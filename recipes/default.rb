@@ -33,6 +33,7 @@ validation_client_name 'automate-validator'
 validation_key 'C:\\Users\\Administrator\\AppData\\Local\\Temp\\kitchen\\cookbooks\\bjc_windows_bootstrap\\recipes\\validator.pem'
 node_name '{0}'
 ssl_verify_mode :verify_none
+chef_license 'accept'
 "@ -f $nodeName
   
     Set-Content -Path c:\\chef\\client.rb -Value $clientrb
@@ -41,6 +42,6 @@ ssl_verify_mode :verify_none
   powershell_script 'Run Chef' do
     code <<-EOH
     ## Run Chef
-    C:\\opscode\\chef\\bin\\chef-client.bat --chef-license accept -j C:\\chef\\first-boot.json
+    C:\\opscode\\chef\\bin\\chef-client.bat -j C:\\chef\\first-boot.json
     EOH
   end
