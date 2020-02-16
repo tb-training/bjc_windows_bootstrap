@@ -41,6 +41,6 @@ ssl_verify_mode :verify_none
   powershell_script 'Run Chef' do
     code <<-EOH
     ## Run Chef
-    C:\\opscode\\chef\\bin\\chef-client.bat -j C:\\chef\\first-boot.json
+    C:\\opscode\\chef\\bin\\chef-client.bat --chef-license accept -j C:\\chef\\first-boot.json
     EOH
   end
