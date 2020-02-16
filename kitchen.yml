@@ -1,0 +1,47 @@
+---
+driver:
+  name: ec2
+  aws_ssh_key_id: chef_demo_2x
+  region: us-west-2
+  security_group_ids: sg-07f0e781a0d92a77b
+  subnet_id: subnet-09e6f8261376328dc
+  associate_public_ip: true
+  instance_type: m3.medium ##t2.micro
+  tags:
+    # Replace YOURNAME and YOURCOMPANY here
+    Name: "Training Node for <YOURNAME>"
+    user: Administrator
+    X-Contact: "tbagio@chef.io"
+    X-Application: "apac"
+    X-Dept: "sales"
+    X-Customer: "apjcorp"
+    X-Project: "BJC-Demo"
+    X-Termination-Date: "2020-07-20T12:04:30Z"
+    TTL: 20
+    X-TTL: 20
+
+transport:
+    username: administrator
+    ssh_key:  ~\.ssh\id_rsa
+    communicator: winrm
+
+provisioner:
+  name: chef_zero
+  product_name: chef
+  product_version: 14.12.3
+
+verifier:
+  name: inspec
+  format: documentation
+
+platforms:
+  - name: windows-2012r2
+
+suites:
+  - name: default
+    run_list:
+      - recipe[bjc_windows_bootstrap::default]
+    verifier:
+      inspec_tests:
+        - test/integration/default
+    attributes:
