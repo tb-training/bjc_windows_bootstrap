@@ -3,13 +3,13 @@ driver:
   name: ec2
   aws_ssh_key_id: chef_demo_2x
   region: us-west-2
-  security_group_ids: sg-07f0e781a0d92a77b
-  subnet_id: subnet-09e6f8261376328dc
+  security_group_ids: sg-0beea4b5390b41c99
+  subnet_id: subnet-099c36693f5cc90d8
   associate_public_ip: true
-  instance_type: m3.medium ##t2.micro
+  instance_type: m5.medium ##t2.micro
   tags:
     # Replace YOURNAME and YOURCOMPANY here
-    Name: "Training Node for <YOURNAME>"
+    Name: " <YOURNAME>-node"
     user: Administrator
     X-Contact: "tbagio@chef.io"
     X-Application: "apac"
