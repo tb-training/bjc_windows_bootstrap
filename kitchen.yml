@@ -6,7 +6,7 @@ driver:
   security_group_ids: sg-0beea4b5390b41c99
   subnet_id: subnet-099c36693f5cc90d8
   associate_public_ip: true
-  instance_type: m5.medium ##t2.micro
+  instance_type: t2.micro
   tags:
     # Replace YOURNAME and YOURCOMPANY here
     Name: " <YOURNAME>-node"
