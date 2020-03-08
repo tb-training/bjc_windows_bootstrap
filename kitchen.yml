@@ -3,13 +3,13 @@ driver:
   name: ec2
   aws_ssh_key_id: chef_demo_2x
   region: us-west-2
-  security_group_ids: sg-0beea4b5390b41c99
-  subnet_id: subnet-099c36693f5cc90d8
+  security_group_ids: sg-0d29bca2254af46b4
+  subnet_id: subnet-0b124de62cb862a00
   associate_public_ip: true
   instance_type: t2.micro
   tags:
     # Replace YOURNAME and YOURCOMPANY here
-    Name: " <YOURNAME>-node"
+    Name: "YOURNAME-node"
     user: Administrator
     X-Contact: "tbagio@chef.io"
     X-Application: "apac"
@@ -17,8 +17,8 @@ driver:
     X-Customer: "apjcorp"
     X-Project: "BJC-Demo"
     X-Termination-Date: "2020-07-20T12:04:30Z"
-    TTL: 20
-    X-TTL: 20
+    TTL: 40
+    X-TTL: 40
 
 transport:
     username: administrator
