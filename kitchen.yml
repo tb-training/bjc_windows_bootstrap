@@ -33,6 +33,7 @@ verifier:
 
 transport:
     username: administrator
+    #password: Cod3Can!
     ssh_key: <%= ENV['AWS_KEYPAIR_FILE'] %>
     communicator: winrm
 

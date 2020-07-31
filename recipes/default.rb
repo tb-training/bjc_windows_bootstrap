@@ -6,6 +6,21 @@
 #
 # Validator.pem on Workstation C:\opscode\chefdk\embedded\lib\ruby\gems\2.4.0\gems\berkshelf-6.3.1\spec\config
 #
+powershell_script 'Set local policy and create user' do
+  code <<-EOH
+  secedit /export /cfg c:\\secpol.cfg
+  (gc C:\\secpol.cfg).replace("PasswordComplexity = 1", "PasswordComplexity = 0") | Out-File C:\\secpol.cfg
+  (gc C:\\secpol.cfg).replace("MinimumPasswordLength = 14", "MinimumPasswordLength = 4") | Out-File C:\\secpol.cfg
+  (gc C:\\secpol.cfg).replace("PasswordHistorySize = 24", "PasswordHistorySize = 0") | Out-File C:\\secpol.cfg
+  secedit /configure /db c:\\windows\\security\\local.sdb /cfg c:\\secpol.cfg /areas SECURITYPOLICY
+  rm -force c:\\secpol.cfg -confirm:$false
+
+  net user chef "Cod3Can!" /add /y
+  net localgroup administrators chef /add
+
+  EOH
+end
+
 powershell_script 'Set host file so the instance knows where to find chef-server' do
     code <<-EOH
     $hosts = "172.31.54.57 chef.automate-demo.com"
