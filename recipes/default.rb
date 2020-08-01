@@ -6,6 +6,12 @@
 #
 # Validator.pem on Workstation C:\opscode\chefdk\embedded\lib\ruby\gems\2.4.0\gems\berkshelf-6.3.1\spec\config
 #
+powershell_script 'Dsiable Windows Defender' do
+    code <<-EOH
+    Set-MpPreference -DisableRealtimeMonitoring $true
+    EOH
+end
+
 powershell_script 'Set local policy and create user' do
   code <<-EOH
   secedit /export /cfg c:\\secpol.cfg
