@@ -11,7 +11,7 @@ driver:
   instance_type: m3.medium
   tags:
     # Replace YOURNAME here
-    Name: "YOURNAME-node"
+    Name: "TBAGIO-node"
     user: Administrator
     X-Contact: "tbagio@chef.io"
     X-Application: "training"
