@@ -46,7 +46,7 @@ powershell_script 'Set host file so the instance knows where to find chef-server
     
   powershell_script 'Create first-boot.json2' do
     code <<-EOH
-    $nodeName = "Win-TBAGIO-{0}" -f (-join ((65..90) + (97..122) | Get-Random -Count 4 | % {[char]$_}))
+    $nodeName = "win-TBAGIO-{0}" -f (-join ((65..90) + (97..122) | Get-Random -Count 4 | % {[char]$_}))
   
     $clientrb = @"
 chef_server_url 'https://chef.automate-demo.com/organizations/automate-org'
